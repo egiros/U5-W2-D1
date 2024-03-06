@@ -17,7 +17,7 @@ namespace AziendaSpedizioni.Models
         [StringLength(12, MinimumLength = 12,
         ErrorMessage = "Il codice deve essere di 12 caratteri")]
         public string codTracciamento { get; set; }
-        [DisplayName("Data di pubblicazione")]
+        [DisplayName("Data di spedizione")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         //[Remote("checkDataSpedizione", "Home", ErrorMessage = "la data deve essere uguale o superiore a quella odierna")]
@@ -42,11 +42,13 @@ namespace AziendaSpedizioni.Models
         [DisplayName("Inserisci il costo della spedizione")]
         [Required(ErrorMessage = "Il costo della spedizione e' obbligatorio")]
         public decimal costoSpedizione { get; set; }
-        [DisplayName("Data di pubblicazione")]
+        [DisplayName("Data di consegna")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         //[Remote("checkDataConsegna", "Home", ErrorMessage = "la data deve essere uguale o superiore a quella odierna")]
         [ValidateCurrentDate(ErrorMessage = "La data deve essere maggiore della data odierna.")]
         public DateTime dataConsegna { get; set; }
+
+        public int IdStatoSpedizione { get; set; }
     }
 }

@@ -6,10 +6,8 @@
 
 <h2>SpedizioniInCorso</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.IdSpedizione)
@@ -40,6 +38,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.dataConsegna)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdStatoSpedizione)
         </th>
         <th></th>
     </tr>
@@ -77,9 +78,18 @@
             @Html.DisplayFor(modelItem => item.dataConsegna)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @if (item.IdStatoSpedizione == 1)
+            {
+                <text>Partito</text>
+            }
+            else
+            {
+                <text>In consegna</text>
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Consegnato", "Consegnato", new { id = item.IdSpedizione }, new {@class = "btn btn-success mb-2"})
+            @Html.ActionLink("In Consegna", "InConsegna", new { id = item.IdSpedizione }, new { @class = "btn btn-warning" })
         </td>
     </tr>
 }
